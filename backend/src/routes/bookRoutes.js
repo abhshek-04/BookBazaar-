@@ -6,19 +6,19 @@ import {
   updateBook,
   deleteBook,
 } from "../controllers/book.controller.js";
-import { protectRoute } from "../middlewares/auth.middleware.js";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 
-router.post("/create", protectRoute ,createBook);           // Admin only
+router.post("/create", authMiddleware ,createBook);           // Admin only
 
-router.get("/", getAllBooks);           // Public
+router.get("/", authMiddleware ,getAllBooks);           // Public
 
-router.get("/:id", getBookById);        // Public
+router.get("/:id", authMiddleware ,getBookById);        // Public
 
-router.put("/:id", updateBook);         // Admin only
+router.put("/:id", authMiddleware ,updateBook);         // Admin only
 
-router.delete("/:id", deleteBook);      // Admin only
+router.delete("/:id",authMiddleware , deleteBook);      // Admin only
 
 
 

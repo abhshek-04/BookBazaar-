@@ -54,8 +54,8 @@ model Book {
   // Relations
   reviews     Review[]     // One book can have many reviews
   orders      OrderItem[]  // Many orders can include this book
-  createdBy   User     @relation("UserBooks", fields: [createdById], references: [id])
-  createdById String    
+  createdBy   User?    @relation("UserBooks", fields: [createdById], references: [id])
+  createdById String? @db.Text
      
 
 }
